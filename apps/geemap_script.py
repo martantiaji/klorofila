@@ -22,7 +22,6 @@ def app():
     
     """)
     
-    with st.echo():
       Map = geemap.Map()
 
       L8filter = ee.ImageCollection("LANDSAT/LC08/C01/T2_SR") \
