@@ -9,7 +9,7 @@ st.set_page_config(page_title="Streamlit for Geospatial", layout="wide")
 
 apps = {
     "home": {"title": "Home", "icon": "house"},
-    "Chlorophyll-a": {"title": "Chlorophyll-a", "icon": "map"},
+    "geemap_script": {"title": "Chlorophyll-a", "icon": "map"},
 }
 
 titles = [app["title"] for app in apps.values()]
@@ -34,12 +34,11 @@ with st.sidebar:
     st.sidebar.title("About")
     st.sidebar.info(
         """
-        This web [app](https://share.streamlit.io/giswqs/streamlit-template) is maintained by [Qiusheng Wu](https://wetlands.io). You can follow me on social media:
-            [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu).
+        Aplikasi web ini dikelola ole Martanti Aji dengan dosen pembimbing Dr. Lalu Muhamad Jaelani S.T., M.Sc., PhD. 
+        Url aplikasi web ini yaitu https://streamlit.geemap.org
         
-        Source code: <https://github.com/giswqs/streamlit-template>
-
-        More menu icons: <https://icons.getbootstrap.com>
+        Anda dapat mengakses referensi kode : <https://github.com/martantiaji/klorofila.git>
+        
     """
     )
 
