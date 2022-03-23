@@ -32,7 +32,8 @@ Map = geemap.Map()
 studyarea= boundary
 
 #Read the Data
-col= ee.ImageCollection("LANDSAT/LC08/C01/T2_SR")             .filterBounds(studyarea)
+col= ee.ImageCollection("LANDSAT/LC08/C01/T2_SR")/
+     .filterBounds(studyarea)
 
 #Make a time
 startYear = 2016
@@ -64,7 +65,8 @@ vizParams = {
 #Make a calculate for Clorophil-a
 
 def func_kbl (ynz):
-  image = col.filter(ee.Filter.calendarRange(ynz, ynz, 'year'))               .map(maskL8sr)               .mean()
+  image = col.filter(ee.Filter.calendarRange(ynz, ynz, 'year'))/
+          .map(maskL8sr).mean()
 
             ndwi = image.normalizedDifference(['B3', 'B5']).rename('NDWI')
             clh_a = image.expression(
@@ -72,7 +74,7 @@ def func_kbl (ynz):
               {'RrsB4': image.select('B4'),
               'RrsB5': image.select('B5')}).updateMask(ndwi)
 
-              return clh_a.set('year', ynz)               .set('month', 1)               .set('date', ee.Date.fromYMD(ynz,1,1))               .set('system:time_start',ee.Date.fromYMD(ynz,1,1))
+              return clh_a.set('year', ynz).set('month', 1).set('date', ee.Date.fromYMD(ynz,1,1)) .set('system:time_start',ee.Date.fromYMD(ynz,1,1))
 
 clh_collection =  ee.ImageCollection.fromImages(year_list.map(func_kbl
 ).flatten())
